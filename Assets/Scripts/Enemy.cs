@@ -18,9 +18,22 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(Vector2.Distance(transform.position, agent.Target.position) < range / 2)
-        {
+        if (!attackRate.IsComplete(false))
+            attackRate.CountByTime();
 
-        }
+        if (Vector2.Distance(transform.position, agent.Target.position) > range)
+            return;
+
+        agent.CanMove = Vector2.Distance(transform.position, agent.Target.position) < range / 2;
+
+        Shoot();
+    }
+
+    void Shoot()
+    {
+        if (!attackRate.IsComplete())
+            return;
+
+        // Attack
     }
 }
