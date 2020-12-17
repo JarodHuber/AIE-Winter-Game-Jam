@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject bulletFab = null;
     public float range = 10;
-    public Timer attackRate = new Timer(.5f);
+    public Timer attackRate = new Timer(2f);
 
     public void Shoot()
     {

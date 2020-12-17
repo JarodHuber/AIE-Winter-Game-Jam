@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -96,7 +96,8 @@ public class Player : MonoBehaviour
 
         if (health.IsComplete(false))
         {
-            // Game Over
+            PlayerPrefs.SetInt("curLvl", SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(5);
         }
     }
 }

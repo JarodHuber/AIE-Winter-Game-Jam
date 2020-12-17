@@ -202,4 +202,4 @@ MonoBehaviour:
     type: 3}
   range: 10
   attackRate:
-    delay: 0.5
+    delay: 2
