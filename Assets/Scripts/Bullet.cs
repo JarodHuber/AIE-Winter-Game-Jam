@@ -21,15 +21,19 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (shotByPlayer && collision.transform.CompareTag("Player"))
+        if (shotByPlayer && collision.transform.CompareTag("Enemy"))
         {
-            // Player Take Damage
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>().EnemyTakeDamage(collision.gameObject.GetComponent<Enemy>());
+            Destroy(gameObject);
         }
-        else if(!shotByPlayer && collision.transform.CompareTag("Enemy"))
+        else if(!shotByPlayer && collision.transform.CompareTag("Player"))
         {
-            // Enemy Take Damage
+            collision.gameObject.GetComponent<Player>().TakeDamage();
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
+        else if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

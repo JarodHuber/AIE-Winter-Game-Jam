@@ -14,15 +14,6 @@ public class Enemy : MonoBehaviour
     public float range = 10;
     public Timer attackRate = new Timer(.5f);
 
-    private void Awake()
-    {
-        agent = GetComponent<SAP2DAgent>();
-    }
-
-    private void Update()
-    {
-    }
-
     public void Shoot()
     {
         if (!attackRate.IsComplete())

@@ -57,12 +57,10 @@ public class EnemyManager : MonoBehaviour
             if (!enem.attackRate.IsComplete(false))
                 enem.attackRate.CountByTime();
 
-            if (Vector2.Distance(enem.transform.position, enem.agent.Target.position) > enem.range)
-                return;
-
             enem.agent.CanMove = enem.agent.path.Length > enem.range / 2;
 
-            enem.Shoot();
+            if (Vector2.Distance(enem.transform.position, enem.agent.Target.position) < enem.range)
+                enem.Shoot();
         }
 
         if (PauseCheck())
@@ -201,11 +199,11 @@ public class EnemyManager : MonoBehaviour
         {
             locChanged = false;
 
-            SAP2D.SAP2DAgent tmpAgent = obj.GetComponent<SAP2D.SAP2DAgent>();
-            tmpAgent.StartCoroutine(tmpAgent.FindPath());
+            //SAP2D.SAP2DAgent tmpAgent = obj.GetComponent<SAP2D.SAP2DAgent>();
+            //tmpAgent.StartCoroutine(tmpAgent.FindPath());
 
-            if ((obj.GetComponent<SAP2D.SAP2DAgent>().path == null) ||
-                Vector3.Distance(obj.transform.position, player.position) < 10)
+            if (/*(obj.GetComponent<SAP2D.SAP2DAgent>().path == null) ||*/
+                Vector3.Distance(obj.transform.position, player.position) < 15)
             {
                 obj.transform.position = RandomPos();
                 locChanged = true;

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 9013520401639781455}
   m_Layer: 10
   m_Name: PlaceholderEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c0d901990469d4a99bf5219daca89d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletFab: {fileID: 0}
+  agent: {fileID: 0}
+  health:
+    delay: 2
+  bulletFab: {fileID: 8202417765154169613, guid: 78aa2200d4020b2448fb4ea4e935ca45,
+    type: 3}
   range: 10
   attackRate:
     delay: 0.5

@@ -15,15 +15,17 @@ public class Player : MonoBehaviour
         Down
     }
 
-    public float speed = 5;
+    public Timer health = new Timer(5);
 
-    Rigidbody2D rb;
-    Vector2 vel = new Vector2();
+    public float speed = 5;
 
     public PlayerDir directionState = PlayerDir.Left;
     public GameObject bulletFab = null;
 
     public Timer reloadTimer = new Timer(.5f);
+
+    Rigidbody2D rb;
+    Vector2 vel = new Vector2();
 
     private void Start()
     {
@@ -86,5 +88,15 @@ public class Player : MonoBehaviour
 
         tmpBullet.direction = direction;
         tmpBullet.shotByPlayer = true;
+    }
+
+    public void TakeDamage()
+    {
+        health.CountByValue(1);
+
+        if (health.IsComplete(false))
+        {
+            // Game Over
+        }
     }
 }
