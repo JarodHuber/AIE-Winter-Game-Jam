@@ -10,19 +10,13 @@ public class Bullet : MonoBehaviour
     [HideInInspector]
     public Vector2 direction = new Vector2();
 
-    Rigidbody2D rb;
-
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
+        Destroy(gameObject, 5);
     }
 
-    private void FixedUpdate()
-    {
-        rb.velocity = direction * speed;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
     }

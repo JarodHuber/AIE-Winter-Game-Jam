@@ -12,21 +12,47 @@ public class EnemyManager : MonoBehaviour
     }
 
     public GameObject enemyFab;
+    public Bounds spawnBounds;
 
-    // Enemies currently in the scene
-    public List<GameObject> curEnemies = new List<GameObject>();
+    // Spawning Speed variables
+    public int startCount = 6;
+    public float waveSizeScaler = 1.76f;
+    public int spawnAggression = 3;
 
+    [Space(15)]
+
+    // Current stage for spawning
     public SpawnStage curStage = SpawnStage.WAITFORWAVEEND;
 
+    // Wave and enemy numbers
     public int waveNum, totalEnemiesForWave, currentNumberOfEnemies;
 
+    // Enemies currently in the scene
+    [HideInInspector]
+    public List<GameObject> curEnemies = new List<GameObject>();
+
+    // Current Waves
     List<SubWave> Wave = new List<SubWave>();
 
-    // "Grace" period at the start of each wave
-    Timer waitTimer = new Timer(10);
+    Transform player = null;
+
+    #region Pause Vars
+    public bool paused = false;
+    bool lastVal = false;
+
+    float pauseTime = 0;
+    #endregion
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private void Update()
     {
+        if (PauseCheck())
+            return;
+
         // Spawning
         if (curStage == SpawnStage.WAITFORWAVEEND)
             Wait();
@@ -36,12 +62,38 @@ public class EnemyManager : MonoBehaviour
             SpawnWave();
     }
 
+    bool PauseCheck()
+    {
+        if (paused && !lastVal)
+        {
+            pauseTime = Time.time;
+            lastVal = true;
+        }
+
+        if (!paused && lastVal)
+        {
+            pauseTime = Time.time - pauseTime;
+            lastVal = false;
+
+            if (waveNum > 0)
+            {
+                foreach (SubWave sw in Wave)
+                {
+                    print("screeeeeeeeeeeeeeeee");
+                    sw.timestamp += pauseTime;
+                }
+            }
+        }
+
+        return paused;
+    }
+
     /// <summary>
     /// Wait for the next wave
     /// </summary>
     void Wait()
     {
-        if (waitTimer.Check() && currentNumberOfEnemies <= totalEnemiesForWave / 4)
+        if (currentNumberOfEnemies <= totalEnemiesForWave / spawnAggression)
             curStage = SpawnStage.PREPAREWAVE;
     }
 
@@ -54,10 +106,10 @@ public class EnemyManager : MonoBehaviour
         totalEnemiesForWave = currentNumberOfEnemies;
 
         // Adding enemies to subwaves
-        Wave.Add(new SubWave(waveNum, 0f, 0.5f, 6 + (int)(1.72f * (waveNum - 1))));
-        if (waveNum > 6)
-            for (int i = 0; i < waveNum / 6; i++)
-                Wave.Add(new SubWave(waveNum, (i * 3) + 2, 0.75f, 1 + (int)(waveNum / 4.67f)));
+        Wave.Add(new SubWave(waveNum, 0f, 0.5f, startCount + (int)(waveSizeScaler * (waveNum - 1))));
+        //if (waveNum > 6)
+        //    for (int i = 0; i < waveNum / 6; i++)
+        //        Wave.Add(new SubWave(waveNum, (i * 3) + 2, 0.75f, 1 + (int)(waveNum / 4.67f)));
 
         // Preping for end of wave
         foreach (SubWave sw in Wave)
@@ -85,6 +137,7 @@ public class EnemyManager : MonoBehaviour
                     GameObject tmpObj = Instantiate(enemyFab, RandomPos(), enemyFab.transform.rotation);
                     curEnemies.Add(tmpObj);
                     DeOverlap(tmpObj);
+                    tmpObj.GetComponent<SAP2D.SAP2DAgent>().Target = player;
                 }
             }
             if (Wave[i].IsDone()) // Once all enemies in the subwave have spawned
@@ -112,9 +165,17 @@ public class EnemyManager : MonoBehaviour
     void DeOverlap(GameObject obj)
     {
         bool locChanged = true;
+
         for (int x = 0; x < 100 && locChanged; x++)
         {
             locChanged = false;
+
+            if (Vector3.Distance(obj.transform.position, player.position) < 10)
+            {
+                obj.transform.position = RandomPos();
+                locChanged = true;
+                continue;
+            }
 
             for (int y = 0; y < curEnemies.Count; y++)
             {
@@ -132,9 +193,9 @@ public class EnemyManager : MonoBehaviour
     }
 
     // simple code to make things look nicer
-    Vector3 RandomPos()
+    Vector2 RandomPos()
     {
-        return new Vector3(Random.Range(-21f, 21f), 0.5f, 55f + Random.Range(-20f, 20f));
+        return spawnBounds.ClosestPoint(((Vector2)spawnBounds.center + Random.insideUnitCircle.normalized) * Random.Range(0f, spawnBounds.max.magnitude));
     }
 }
 

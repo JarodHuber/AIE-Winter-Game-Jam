@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerDir
-{
-    None,
-    Left,
-    Right,
-    Up,
-    Down
-}
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    public enum PlayerDir
+    {
+        None,
+        Left,
+        Right,
+        Up,
+        Down
+    }
+
     public float speed = 5;
 
     Rigidbody2D rb;
