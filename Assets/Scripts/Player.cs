@@ -85,5 +85,6 @@ public class Player : MonoBehaviour
         Bullet tmpBullet = Instantiate(bulletFab, transform.position, Quaternion.identity).GetComponent<Bullet>();
 
         tmpBullet.direction = direction;
+        tmpBullet.shotByPlayer = true;
     }
 }

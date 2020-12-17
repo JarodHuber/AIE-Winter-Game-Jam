@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
     public float speed = 25;
 
     [HideInInspector]
+    public bool shotByPlayer = false;
+
+    [HideInInspector]
     public Vector2 direction = new Vector2();
 
     private void Start()
@@ -18,6 +21,15 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (shotByPlayer && collision.transform.CompareTag("Player"))
+        {
+            // Player Take Damage
+        }
+        else if(!shotByPlayer && collision.transform.CompareTag("Enemy"))
+        {
+            // Enemy Take Damage
+        }
+
         Destroy(gameObject);
     }
 }

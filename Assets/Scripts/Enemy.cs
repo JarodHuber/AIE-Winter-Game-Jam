@@ -5,7 +5,10 @@ using SAP2D;
 
 public class Enemy : MonoBehaviour
 {
-    SAP2DAgent agent = null;
+    [HideInInspector]
+    public SAP2DAgent agent = null;
+
+    public Timer health = new Timer(2);
 
     public GameObject bulletFab = null;
     public float range = 10;
@@ -18,22 +21,16 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (!attackRate.IsComplete(false))
-            attackRate.CountByTime();
-
-        if (Vector2.Distance(transform.position, agent.Target.position) > range)
-            return;
-
-        agent.CanMove = Vector2.Distance(transform.position, agent.Target.position) < range / 2;
-
-        Shoot();
     }
 
-    void Shoot()
+    public void Shoot()
     {
         if (!attackRate.IsComplete())
             return;
 
-        // Attack
+        Bullet tmpBullet = Instantiate(bulletFab, transform.position, Quaternion.identity).GetComponent<Bullet>();
+
+        tmpBullet.direction = (agent.Target.position - transform.position).normalized;
+        tmpBullet.shotByPlayer = false;
     }
 }

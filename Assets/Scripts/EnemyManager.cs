@@ -50,6 +50,21 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        for (int x = 0; x < curEnemies.Count; x++)
+        {
+            Enemy enem = curEnemies[x].GetComponent<Enemy>();
+
+            if (!enem.attackRate.IsComplete(false))
+                enem.attackRate.CountByTime();
+
+            if (Vector2.Distance(enem.transform.position, enem.agent.Target.position) > enem.range)
+                return;
+
+            enem.agent.CanMove = enem.agent.path.Length > enem.range / 2;
+
+            enem.Shoot();
+        }
+
         if (PauseCheck())
             return;
 
@@ -136,8 +151,13 @@ public class EnemyManager : MonoBehaviour
                 {
                     GameObject tmpObj = Instantiate(enemyFab, RandomPos(), enemyFab.transform.rotation);
                     curEnemies.Add(tmpObj);
+
+                    Enemy tmpEnem = tmpObj.GetComponent<Enemy>();
+                    tmpEnem.agent = tmpObj.GetComponent<SAP2D.SAP2DAgent>();
+                    tmpEnem.agent.Target = player;
+
                     DeOverlap(tmpObj);
-                    tmpObj.GetComponent<SAP2D.SAP2DAgent>().Target = player;
+
                 }
             }
             if (Wave[i].IsDone()) // Once all enemies in the subwave have spawned
@@ -158,6 +178,17 @@ public class EnemyManager : MonoBehaviour
         currentNumberOfEnemies--;
         Destroy(enemy);
     }
+
+    public void EnemyTakeDamage(Enemy enemy)
+    {
+        enemy.health.CountByValue(1);
+
+        if (enemy.health.IsComplete(false))
+        {
+            RemoveEnemy(enemy.gameObject);
+        }
+    }
+
     /// <summary>
     /// Ensures no collectible is spawned on top of another, or the player
     /// </summary>
@@ -170,7 +201,11 @@ public class EnemyManager : MonoBehaviour
         {
             locChanged = false;
 
-            if (Vector3.Distance(obj.transform.position, player.position) < 10)
+            SAP2D.SAP2DAgent tmpAgent = obj.GetComponent<SAP2D.SAP2DAgent>();
+            tmpAgent.StartCoroutine(tmpAgent.FindPath());
+
+            if ((obj.GetComponent<SAP2D.SAP2DAgent>().path == null) ||
+                Vector3.Distance(obj.transform.position, player.position) < 10)
             {
                 obj.transform.position = RandomPos();
                 locChanged = true;
