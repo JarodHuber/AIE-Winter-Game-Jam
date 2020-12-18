@@ -28805,7 +28805,7 @@ MonoBehaviour:
   totalEnemiesForWave: 0
   currentNumberOfEnemies: 0
   curEnemies: []
-  paused: 0
+  paused: 1
 --- !u!114 &2129947731
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -87,6 +87,7 @@ public class Dialoge : MonoBehaviour
                 // Exit dialoge
 
                 GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>().paused = false;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().paused = false;
 
                 Destroy(gameObject);
                 return;
