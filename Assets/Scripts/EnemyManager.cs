@@ -50,17 +50,10 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        // Enemy Update
         for (int x = 0; x < curEnemies.Count; x++)
         {
-            Enemy enem = curEnemies[x].GetComponent<Enemy>();
-
-            if (!enem.attackRate.IsComplete(false))
-                enem.attackRate.CountByTime();
-
-            enem.agent.CanMove = enem.agent.path.Length > enem.range / 2;
-
-            if (Vector2.Distance(enem.transform.position, enem.agent.Target.position) < enem.range)
-                enem.Shoot();
+            EnemUpdate(curEnemies[x].GetComponent<Enemy>());
         }
 
         if (PauseCheck())
@@ -73,6 +66,53 @@ public class EnemyManager : MonoBehaviour
             GenerateWave();
         else if (curStage == SpawnStage.SPAWNENEMIES)
             SpawnWave();
+    }
+
+    void EnemUpdate(Enemy enem)
+    {
+        if (!enem.attackRate.IsComplete(false))
+            enem.attackRate.CountByTime();
+
+        enem.agent.CanMove = enem.agent.path.Length > enem.range / 2;
+
+        if (Vector2.Distance(enem.transform.position, enem.agent.Target.position) < enem.range)
+            enem.Shoot();
+
+        EnemSpriteUpdate(enem);
+
+        enem.prevPosition = enem.transform.position;
+    }
+    void EnemSpriteUpdate(Enemy enem)
+    {
+        Vector2 travelDir = (Vector2)enem.transform.position - enem.prevPosition;
+
+        if (travelDir == Vector2.zero)
+            return;
+
+        float angle = Vector2.Angle(Vector2.up, travelDir);
+
+        if (angle < 30)
+        {
+            enem.sp.sprite = enem.enemySprites[2];
+        }
+        else if (angle > 150)
+        {
+            enem.sp.sprite = enem.enemySprites[0];
+        }
+        else
+        {
+            enem.sp.sprite = enem.enemySprites[1];
+
+            angle = Vector2.SignedAngle(Vector2.up, (Vector2)enem.transform.position - enem.prevPosition);
+            if (angle < 0)
+            {
+                enem.sp.flipX = true;
+            }
+            else if (angle > 0)
+            {
+                enem.sp.flipX = false;
+            }
+        }
     }
 
     bool PauseCheck()
@@ -147,15 +187,7 @@ public class EnemyManager : MonoBehaviour
             {
                 if (Wave[i].Spawn())
                 {
-                    GameObject tmpObj = Instantiate(enemyFab, RandomPos(), enemyFab.transform.rotation);
-                    curEnemies.Add(tmpObj);
-
-                    Enemy tmpEnem = tmpObj.GetComponent<Enemy>();
-                    tmpEnem.agent = tmpObj.GetComponent<SAP2D.SAP2DAgent>();
-                    tmpEnem.agent.Target = player;
-
-                    DeOverlap(tmpObj);
-
+                    SpawnEnemy();
                 }
             }
             if (Wave[i].IsDone()) // Once all enemies in the subwave have spawned
@@ -168,6 +200,19 @@ public class EnemyManager : MonoBehaviour
             print("spawning finished"); //Signal the end of the wave spawning
             curStage = SpawnStage.WAITFORWAVEEND;
         }
+    }
+
+    void SpawnEnemy()
+    {
+        GameObject tmpObj = Instantiate(enemyFab, RandomPos(), enemyFab.transform.rotation);
+        curEnemies.Add(tmpObj);
+
+        Enemy tmpEnem = tmpObj.GetComponent<Enemy>();
+        tmpEnem.agent = tmpObj.GetComponent<SAP2D.SAP2DAgent>();
+        tmpEnem.agent.Target = player;
+        tmpEnem.sp = tmpObj.GetComponentInChildren<SpriteRenderer>();
+
+        DeOverlap(tmpObj);
     }
 
     public void RemoveEnemy(GameObject enemy)

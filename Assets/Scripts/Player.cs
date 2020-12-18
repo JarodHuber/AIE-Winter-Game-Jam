@@ -94,6 +94,8 @@ public class Player : MonoBehaviour
     {
         health.CountByValue(1);
 
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameEngine>().LowerHealthBar((int)health.TimeRemaining);
+
         if (health.IsComplete(false))
         {
             PlayerPrefs.SetInt("curLvl", SceneManager.GetActiveScene().buildIndex);

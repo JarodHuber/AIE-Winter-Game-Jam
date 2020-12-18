@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     {
         if (shotByPlayer && collision.transform.CompareTag("Enemy"))
         {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>().EnemyTakeDamage(collision.gameObject.GetComponent<Enemy>());
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>().EnemyTakeDamage(collision.gameObject.GetComponentInParent<Enemy>());
             Destroy(gameObject);
         }
         else if(!shotByPlayer && collision.transform.CompareTag("Player"))
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<Player>().TakeDamage();
             Destroy(gameObject);
         }
-        else if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Enemy"))
+        else if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Enemy") && !collision.transform.CompareTag("EnemyBase"))
         {
             Destroy(gameObject);
         }

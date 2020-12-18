@@ -14,6 +14,13 @@ public class Enemy : MonoBehaviour
     public float range = 10;
     public Timer attackRate = new Timer(2f);
 
+    public Sprite[] enemySprites;
+
+    [HideInInspector]
+    public Vector2 prevPosition = new Vector2();
+    [HideInInspector]
+    public SpriteRenderer sp = null;
+
     public void Shoot()
     {
         if (!attackRate.IsComplete())
