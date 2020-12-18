@@ -99,11 +99,15 @@ MonoBehaviour:
   health:
     delay: 5
   speed: 10
-  directionState: 0
   bulletFab: {fileID: 8076124426894249655, guid: da8c943748d2c984a8b97e18283fbac6,
     type: 3}
   reloadTimer:
     delay: 0.5
+  playerStates:
+  - {fileID: 21300000, guid: 4695bf6d5e55ab14c9607a3e863ba062, type: 3}
+  - {fileID: 21300000, guid: ae15483dc8fe9df41b92cbee02448953, type: 3}
+  - {fileID: 21300000, guid: 7c8ee8331731c6846ab40883f78aa599, type: 3}
+  - {fileID: 21300000, guid: 6e59d4ba265ee9a4ea3ca305d7d4a245, type: 3}
   activeCollectible: 0
   collectibleDuration:
     delay: 5

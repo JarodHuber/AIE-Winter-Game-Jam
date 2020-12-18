@@ -6,23 +6,14 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public enum PlayerDir
-    {
-        None,
-        Left,
-        Right,
-        Up,
-        Down
-    }
 
     public Timer health = new Timer(5);
-
     public float speed = 5;
 
-    public PlayerDir directionState = PlayerDir.Left;
     public GameObject bulletFab = null;
-
     public Timer reloadTimer = new Timer(.5f);
+
+    public Sprite[] playerStates;
 
     #region collectible
     public CollectibleType activeCollectible = CollectibleType.NONE;
@@ -32,10 +23,14 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     Vector2 vel = new Vector2();
 
+    SpriteRenderer sp;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         reloadTimer.Reset(reloadTimer.Delay);
+
+        sp = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -65,25 +60,25 @@ public class Player : MonoBehaviour
 
         if (Input.GetAxis("HorizontalBullet") > 0)
         {
-            directionState = PlayerDir.Right;
+            sp.sprite = playerStates[2];
             Shoot(transform.right);
             return;
         }
         if (Input.GetAxis("HorizontalBullet") < 0)
         {
-            directionState = PlayerDir.Left;
+            sp.sprite = playerStates[1];
             Shoot(-transform.right);
             return;
         }
         if (Input.GetAxis("VerticalBullet") > 0)
         {
-            directionState = PlayerDir.Up;
+            sp.sprite = playerStates[3];
             Shoot(transform.up);
             return;
         }
         if (Input.GetAxis("VerticalBullet") < 0)
         {
-            directionState = PlayerDir.Down;
+            sp.sprite = playerStates[0];
             Shoot(-transform.up);
             return;
         }
