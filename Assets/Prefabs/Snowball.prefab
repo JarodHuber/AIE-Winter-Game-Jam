@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6934493623058796149}
   - component: {fileID: 8802255002797329164}
-  - component: {fileID: -6148300651414610276}
   - component: {fileID: 6657925792142106899}
+  - component: {fileID: -6148300651414610276}
   - component: {fileID: 1544049576340021311}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Snowball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,27 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &-6148300651414610276
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8076124426894249655}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &6657925792142106899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +102,27 @@ MonoBehaviour:
   - {fileID: 1447415996819287343, guid: 22401b698f76ab943b806985b8f577d5, type: 3}
   shotByPlayer: 0
   direction: {x: 0, y: 0}
+--- !u!50 &-6148300651414610276
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076124426894249655}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &1544049576340021311
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,9 +133,9 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030933619, y: -0.026809096}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.40513718
+  m_Radius: 0.25

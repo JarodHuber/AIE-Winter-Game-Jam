@@ -225,7 +225,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   health:
     delay: 2
-  bulletFab: {fileID: 8202417765154169613, guid: 78aa2200d4020b2448fb4ea4e935ca45,
+  bulletFab: {fileID: 8076124426894249655, guid: da8c943748d2c984a8b97e18283fbac6,
     type: 3}
   range: 10
   attackRate:

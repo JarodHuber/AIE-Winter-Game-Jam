@@ -100,7 +100,7 @@ MonoBehaviour:
     delay: 5
   speed: 10
   directionState: 0
-  bulletFab: {fileID: 8202417765154169613, guid: 78aa2200d4020b2448fb4ea4e935ca45,
+  bulletFab: {fileID: 8076124426894249655, guid: da8c943748d2c984a8b97e18283fbac6,
     type: 3}
   reloadTimer:
     delay: 0.5
