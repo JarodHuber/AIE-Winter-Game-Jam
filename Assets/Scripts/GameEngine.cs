@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameEngine : MonoBehaviour
 {
+    public bool paused = true;
+
     #region Timer
     public Timer gameTimer = new Timer(120);
     public GameObject portal = null;
@@ -22,6 +24,14 @@ public class GameEngine : MonoBehaviour
 
     void Timer()
     {
+        int min = (int)gameTimer.TimeRemaining / 60;
+
+        if (paused)
+        {
+            timerUI.text = ((min != 0) ? min.ToString() + " : " : "") + ((int)gameTimer.TimeRemaining % 60).ToString((min != 0) ? "00" : "");
+            return;
+        }
+
         if (portalOpen)
         {
             timerUI.text = "PORTAL OPEN";
@@ -34,8 +44,6 @@ public class GameEngine : MonoBehaviour
             portal.SetActive(true);
             return;
         }
-
-        int min = (int)gameTimer.TimeRemaining / 60;
 
         timerUI.text = ((min != 0) ? min.ToString() + " : " : "") + ((int)gameTimer.TimeRemaining % 60).ToString((min != 0) ? "00" : "");
     }
