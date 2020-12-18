@@ -98,10 +98,7 @@ public class Player : MonoBehaviour
         if (!reloadTimer.IsComplete()) 
             return;
 
-        Bullet tmpBullet = Instantiate(bulletFab, transform.position, Quaternion.identity).GetComponent<Bullet>();
-
-        tmpBullet.direction = direction;
-        tmpBullet.shotByPlayer = true;
+        Instantiate(bulletFab, transform.position, Quaternion.identity).GetComponent<Bullet>().Initialize(direction, true, (activeCollectible == CollectibleType.DOUBLEDAMAGE) ? 2 : 1);
     }
 
     public void Heal(int amount)
@@ -112,10 +109,12 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (!invincibleTimer.IsComplete())
+            return;
+
         health.CountByValue(1);
 
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameEngine>().LowerHealthBar((int)health.TimeRemaining);
-        invincibleTimer.Reset();
 
         if (health.IsComplete(false))
         {

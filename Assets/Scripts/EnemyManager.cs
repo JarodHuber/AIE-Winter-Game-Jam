@@ -239,9 +239,9 @@ public class EnemyManager : MonoBehaviour
         tmpCollect.type = (val < .5f) ? CollectibleType.DOUBLEDAMAGE : CollectibleType.HEALTH;
     }
 
-    public void EnemyTakeDamage(Enemy enemy)
+    public void EnemyTakeDamage(Enemy enemy, int damage)
     {
-        enemy.health.CountByValue((player.GetComponent<Player>().activeCollectible == CollectibleType.DOUBLEDAMAGE)?2:1);
+        enemy.health.CountByValue(damage);
 
         if (enemy.health.IsComplete(false))
         {

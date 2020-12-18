@@ -26,9 +26,6 @@ public class Enemy : MonoBehaviour
         if (!attackRate.IsComplete())
             return;
 
-        Bullet tmpBullet = Instantiate(bulletFab, transform.position, Quaternion.identity).GetComponent<Bullet>();
-
-        tmpBullet.direction = (agent.Target.position - transform.position).normalized;
-        tmpBullet.shotByPlayer = false;
+        Instantiate(bulletFab, transform.position, Quaternion.identity).GetComponent<Bullet>().Initialize((agent.Target.position - transform.position).normalized, false, 1);
     }
 }

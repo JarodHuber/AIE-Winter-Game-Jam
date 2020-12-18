@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8076124426894249655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.688, y: 0, z: 0}
-  m_LocalScale: {x: 1.4079, y: 1.4079, z: 1.4079}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,8 +100,7 @@ MonoBehaviour:
   sounds:
   - {fileID: 6514837350604622445, guid: c2dc101ba2fe45c49b52a2b1d06e40ae, type: 3}
   - {fileID: 1447415996819287343, guid: 22401b698f76ab943b806985b8f577d5, type: 3}
-  shotByPlayer: 0
-  direction: {x: 0, y: 0}
+  empoweredSprite: {fileID: 21300000, guid: 4b278819b46d6444baf9e8b6d47ba484, type: 3}
 --- !u!50 &-6148300651414610276
 Rigidbody2D:
   serializedVersion: 4

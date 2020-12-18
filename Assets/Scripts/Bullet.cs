@@ -8,12 +8,23 @@ public class Bullet : MonoBehaviour
     public float speed = 25;
 
     public GameObject[] sounds;
+    public Sprite empoweredSprite = null;
 
-    [HideInInspector]
-    public bool shotByPlayer = false;
+    Vector2 direction = new Vector2();
+    bool shotByPlayer = false;
+    int damage = 1;
 
-    [HideInInspector]
-    public Vector2 direction = new Vector2();
+    public void Initialize(Vector2 dir, bool isPlayer, int dmg)
+    {
+        direction = dir;
+        shotByPlayer = isPlayer;
+        damage = dmg;
+
+        if(dmg != 1)
+        {
+            GetComponent<SpriteRenderer>().sprite = empoweredSprite;
+        }
+    }
 
     private void Start()
     {
@@ -25,7 +36,7 @@ public class Bullet : MonoBehaviour
     {
         if (shotByPlayer && collision.transform.CompareTag("Enemy"))
         {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>().EnemyTakeDamage(collision.gameObject.GetComponentInParent<Enemy>());
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>().EnemyTakeDamage(collision.gameObject.GetComponentInParent<Enemy>(), damage);
             Instantiate(sounds[0], collision.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
