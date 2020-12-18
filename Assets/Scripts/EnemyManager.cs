@@ -241,7 +241,7 @@ public class EnemyManager : MonoBehaviour
 
     public void EnemyTakeDamage(Enemy enemy)
     {
-        enemy.health.CountByValue(1);
+        enemy.health.CountByValue((player.GetComponent<Player>().activeCollectible == CollectibleType.TEST)?2:1);
 
         if (enemy.health.IsComplete(false))
         {

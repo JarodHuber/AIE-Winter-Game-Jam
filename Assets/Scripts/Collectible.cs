@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum CollectibleType
 {
+    NONE,
     TEST
 }
 
@@ -16,12 +17,8 @@ public class Collectible : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player"))
             return;
 
-        switch (type)
-        {
-            case CollectibleType.TEST:
-                print("Collected");
-                break;
-        }
+        collision.GetComponent<Player>().activeCollectible = type;
+        collision.GetComponent<Player>().collectibleDuration.Reset();
 
         Destroy(gameObject);
     }

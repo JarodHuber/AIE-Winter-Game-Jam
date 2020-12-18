@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
 
     public Timer reloadTimer = new Timer(.5f);
 
+    #region collectible
+    public CollectibleType activeCollectible = CollectibleType.NONE;
+    public Timer collectibleDuration = new Timer(5);
+    #endregion
+
     Rigidbody2D rb;
     Vector2 vel = new Vector2();
 
@@ -37,6 +42,11 @@ public class Player : MonoBehaviour
     {
         Move();
         Gun();
+
+        if (activeCollectible != CollectibleType.NONE && collectibleDuration.Check())
+        {
+            activeCollectible = CollectibleType.NONE;
+        }
     }
 
     void Move()
