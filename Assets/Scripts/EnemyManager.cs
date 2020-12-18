@@ -10,17 +10,22 @@ public class EnemyManager : MonoBehaviour
         PREPAREWAVE,
         SPAWNENEMIES
     }
-
+    [Space(10)]
     public GameObject enemyFab;
     public Bounds spawnBounds;
 
+    public GameObject collectibleFab;
+
+    [Header("Variables to control wave spawning power")]
     // Spawning Speed variables
+    [Tooltip("How many initial enemies are spawned, scaler adds on top of this for later levels")]
     public int startCount = 6;
+    [Tooltip("How many more enemies are added per wave")]
     public float waveSizeScaler = 1.76f;
+    [Tooltip("What fraction of enemies need to remain before next wave spawned, 3 = 1/3 of the enemies, 4 = 1/4 of the enemies, etc.")]
     public int spawnAggression = 3;
 
-    [Space(15)]
-
+    [Header("Do Not Touch, just for monitoring")]
     // Current stage for spawning
     public SpawnStage curStage = SpawnStage.WAITFORWAVEEND;
 
@@ -217,9 +222,21 @@ public class EnemyManager : MonoBehaviour
 
     public void RemoveEnemy(GameObject enemy)
     {
+        TrySpawnCollectible(enemy.transform.position);
         curEnemies.Remove(enemy);
         currentNumberOfEnemies--;
         Destroy(enemy);
+    }
+
+    void TrySpawnCollectible(Vector2 pos)
+    {
+        if (Random.value > .3f)
+            return;
+
+        Collectible tmpCollect = Instantiate(collectibleFab, pos, Quaternion.identity).GetComponent<Collectible>();
+
+        float val = Random.value;
+        tmpCollect.type = (val < 1f) ? CollectibleType.TEST : CollectibleType.TEST;
     }
 
     public void EnemyTakeDamage(Enemy enemy)
