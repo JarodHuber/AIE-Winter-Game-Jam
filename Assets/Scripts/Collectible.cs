@@ -15,7 +15,7 @@ public class Collectible : MonoBehaviour
     //[HideInInspector]
     public CollectibleType type = CollectibleType.NONE;
 
-    private void Awake()
+    private void Start()
     {
         if (type != CollectibleType.NONE)
             GetComponent<SpriteRenderer>().sprite = collectibleVariants[(int)type];

@@ -233,10 +233,8 @@ public class EnemyManager : MonoBehaviour
         if (Random.value > .3f)
             return;
 
-        Collectible tmpCollect = Instantiate(collectibleFab, pos, Quaternion.identity).GetComponent<Collectible>();
-
         float val = Random.value;
-        tmpCollect.type = (val < .5f) ? CollectibleType.DOUBLEDAMAGE : CollectibleType.HEALTH;
+        Instantiate(collectibleFab, pos, Quaternion.identity).GetComponent<Collectible>().type = (val < .5f) ? CollectibleType.DOUBLEDAMAGE : CollectibleType.HEALTH;
     }
 
     public void EnemyTakeDamage(Enemy enemy, int damage)
@@ -290,7 +288,7 @@ public class EnemyManager : MonoBehaviour
     // simple code to make things look nicer
     Vector2 RandomPos()
     {
-        return spawnBounds.ClosestPoint(((Vector2)spawnBounds.center + Random.insideUnitCircle.normalized) * Random.Range(0f, spawnBounds.max.magnitude));
+        return spawnBounds.ClosestPoint(((Vector2)spawnBounds.center + Random.insideUnitCircle.normalized) * Random.Range(0f, spawnBounds.extents.magnitude - 5));
     }
 }
 

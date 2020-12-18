@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
     {
         health.CountByValue(-amount);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameEngine>().RaiseHealthBar((int)health.TimeRemaining);
+        invincibleTimer.Reset();
     }
 
     public void TakeDamage()
