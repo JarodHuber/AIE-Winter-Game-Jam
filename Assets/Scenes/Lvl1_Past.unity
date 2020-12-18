@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 15557429}
   - component: {fileID: 15557428}
   m_Layer: 8
-  m_Name: PlaceholderPlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,18 +168,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00072053075, y: -0.010807931}
+  m_Offset: {x: 0.0007208586, y: -0.05848545}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 2}
-    newSize: {x: 0.16, y: 0.32}
+    newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16432318, y: 0.30126625}
+  m_Size: {x: 0.9907291, y: 1.8714372}
   m_EdgeRadius: 0
 --- !u!50 &15557429
 Rigidbody2D:
@@ -218,10 +218,13 @@ MonoBehaviour:
     delay: 5
   speed: 10
   directionState: 0
-  bulletFab: {fileID: 8202417765154169613, guid: 78aa2200d4020b2448fb4ea4e935ca45,
+  bulletFab: {fileID: 5564890972672227200, guid: 60e6bc5213dc69747b33f2db3999c4ec,
     type: 3}
   reloadTimer:
     delay: 0.5
+  activeCollectible: 0
+  collectibleDuration:
+    delay: 5
 --- !u!212 &15557431
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -259,14 +262,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -932033441
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bce465df5facfc64e9e84c8913356fa4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4695bf6d5e55ab14c9607a3e863ba062, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.32}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -588,6 +591,8 @@ MonoBehaviour:
   spawnBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 25, y: 25, z: 0}
+  collectibleFab: {fileID: 8747291353054040064, guid: cbe3af32b83202b47ada10a760a0c009,
+    type: 3}
   startCount: 6
   waveSizeScaler: 1.76
   spawnAggression: 3
@@ -723,7 +728,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &856800319
@@ -1027,7 +1032,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1611552197
@@ -1138,7 +1143,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -276260149
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 44207c32bad0b6340923c0d2a980aa19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
