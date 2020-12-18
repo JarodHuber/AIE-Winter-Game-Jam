@@ -97,6 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  sounds:
+  - {fileID: 6514837350604622445, guid: c2dc101ba2fe45c49b52a2b1d06e40ae, type: 3}
+  - {fileID: 1447415996819287343, guid: 22401b698f76ab943b806985b8f577d5, type: 3}
+  shotByPlayer: 0
   direction: {x: 0, y: 0}
 --- !u!50 &8202417765154169841
 Rigidbody2D:
