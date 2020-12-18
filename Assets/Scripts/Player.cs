@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-
     public Timer health = new Timer(5);
     public float speed = 5;
 
@@ -19,6 +18,8 @@ public class Player : MonoBehaviour
     public CollectibleType activeCollectible = CollectibleType.NONE;
     public Timer collectibleDuration = new Timer(5);
     #endregion
+
+    public bool paused = false;
 
     Rigidbody2D rb;
     Vector2 vel = new Vector2();
@@ -37,6 +38,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (paused)
+            return;
+
         Move();
         Gun();
 

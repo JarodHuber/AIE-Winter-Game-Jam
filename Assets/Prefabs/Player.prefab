@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ae15483dc8fe9df41b92cbee02448953, type: 3}
   - {fileID: 21300000, guid: 7c8ee8331731c6846ab40883f78aa599, type: 3}
   - {fileID: 21300000, guid: 6e59d4ba265ee9a4ea3ca305d7d4a245, type: 3}
+  paused: 1
   activeCollectible: 0
   collectibleDuration:
     delay: 5
