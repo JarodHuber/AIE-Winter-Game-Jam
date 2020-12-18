@@ -22,6 +22,7 @@ public class Collectible : MonoBehaviour
                 print("Collected");
                 break;
         }
+
         Destroy(gameObject);
     }
 }
