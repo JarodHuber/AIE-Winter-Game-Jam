@@ -4,14 +4,22 @@ using UnityEngine;
 
 public enum CollectibleType
 {
-    NONE,
+    NONE = -1,
     DOUBLEDAMAGE,
     HEALTH
 }
 
 public class Collectible : MonoBehaviour
 {
-    public CollectibleType type = CollectibleType.DOUBLEDAMAGE;
+    public Sprite[] collectibleVariants;
+    //[HideInInspector]
+    public CollectibleType type = CollectibleType.NONE;
+
+    private void Awake()
+    {
+        if (type != CollectibleType.NONE)
+            GetComponent<SpriteRenderer>().sprite = collectibleVariants[(int)type];
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
