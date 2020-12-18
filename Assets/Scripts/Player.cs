@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     SpriteRenderer sp;
 
+    Timer invincibleTimer = new Timer(0.2f);
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,6 +44,9 @@ public class Player : MonoBehaviour
         {
             activeCollectible = CollectibleType.NONE;
         }
+
+        if (!invincibleTimer.IsComplete(false))
+            invincibleTimer.CountByTime();
     }
 
     void Move()
@@ -95,11 +100,18 @@ public class Player : MonoBehaviour
         tmpBullet.shotByPlayer = true;
     }
 
+    public void Heal(int amount)
+    {
+        health.CountByValue(-amount);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameEngine>().RaiseHealthBar((int)health.TimeRemaining);
+    }
+
     public void TakeDamage()
     {
         health.CountByValue(1);
 
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameEngine>().LowerHealthBar((int)health.TimeRemaining);
+        invincibleTimer.Reset();
 
         if (health.IsComplete(false))
         {

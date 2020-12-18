@@ -40,6 +40,14 @@ public class GameEngine : MonoBehaviour
         timerUI.text = ((min != 0) ? min.ToString() + " : " : "") + ((int)gameTimer.TimeRemaining % 60).ToString((min != 0) ? "00" : "");
     }
 
+    public void RaiseHealthBar(int health)
+    {
+        for (int x = 0; x < health; x++)
+        {
+            healthBar[x].SetActive(true);
+        }
+    }
+
     public void LowerHealthBar(int health)
     {
         for (int x = health; x < healthBar.Length; x++)

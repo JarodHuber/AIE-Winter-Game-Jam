@@ -71,8 +71,7 @@ public struct Timer
     public void CountByValue(float value)
     {
         time += value;
-        time = Mathf.Max(time, 0);
-        time = Mathf.Min(time, delay);
+        time = Mathf.Clamp(time, 0, delay);
     }
 
     /// <summary>

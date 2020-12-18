@@ -236,12 +236,12 @@ public class EnemyManager : MonoBehaviour
         Collectible tmpCollect = Instantiate(collectibleFab, pos, Quaternion.identity).GetComponent<Collectible>();
 
         float val = Random.value;
-        tmpCollect.type = (val < 1f) ? CollectibleType.TEST : CollectibleType.TEST;
+        tmpCollect.type = (val < .5f) ? CollectibleType.DOUBLEDAMAGE : CollectibleType.HEALTH;
     }
 
     public void EnemyTakeDamage(Enemy enemy)
     {
-        enemy.health.CountByValue((player.GetComponent<Player>().activeCollectible == CollectibleType.TEST)?2:1);
+        enemy.health.CountByValue((player.GetComponent<Player>().activeCollectible == CollectibleType.DOUBLEDAMAGE)?2:1);
 
         if (enemy.health.IsComplete(false))
         {

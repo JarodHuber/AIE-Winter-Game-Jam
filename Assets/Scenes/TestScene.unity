@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.3254902}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.3254902}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2024,11 +2024,8 @@ MonoBehaviour:
   textSpeed:
     delay: 0.01
   dialoge:
-  - testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-  - testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-  - testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-  - testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-  personTalking: 00000000ffffffff0100000000000000
+  - 
+  personTalking: 00000000
   fades:
   - {fileID: 19388769}
   - {fileID: 289333330}

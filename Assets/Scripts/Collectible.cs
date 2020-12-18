@@ -5,20 +5,28 @@ using UnityEngine;
 public enum CollectibleType
 {
     NONE,
-    TEST
+    DOUBLEDAMAGE,
+    HEALTH
 }
 
 public class Collectible : MonoBehaviour
 {
-    public CollectibleType type = CollectibleType.TEST;
+    public CollectibleType type = CollectibleType.DOUBLEDAMAGE;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
             return;
 
-        collision.GetComponent<Player>().activeCollectible = type;
-        collision.GetComponent<Player>().collectibleDuration.Reset();
+        if(type == CollectibleType.HEALTH)
+        {
+            collision.GetComponent<Player>().Heal(1);
+        }
+        else
+        {
+            collision.GetComponent<Player>().activeCollectible = type;
+            collision.GetComponent<Player>().collectibleDuration.Reset();
+        }
 
         Destroy(gameObject);
     }
