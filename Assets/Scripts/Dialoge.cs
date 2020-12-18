@@ -5,9 +5,21 @@ using UnityEngine.UI;
 
 public class Dialoge : MonoBehaviour
 {
+    public enum PersonTalking
+    {
+        None = -1,
+        Scrooge,
+        Other
+    }
+
+    [Tooltip("How many seconds until the next char appears")]
     public Timer textSpeed = new Timer(.01f);
+    [Header("Fill these with the dialoge and whose speaking")]
     [TextArea]
     public string[] dialoge;
+    public PersonTalking[] personTalking;
+    [Header("Do Not Touch, some talking overlays")]
+    public GameObject[] fades;
 
     Text text = null;
     bool textFinished = false;
@@ -21,6 +33,18 @@ public class Dialoge : MonoBehaviour
 
     private void Update()
     {
+        for (int x = 0; x < fades.Length; x++)
+        {
+            if(x != (int)personTalking[stringCounter])
+            {
+                fades[x].SetActive(true);
+            }
+            else
+            {
+                fades[x].SetActive(false);
+            }
+        }
+
         if(!textFinished)
         {
             if (Input.GetMouseButtonDown(0))
