@@ -1230,7 +1230,7 @@ MonoBehaviour:
     ShowGridParameters: 1
     ShowPathfindingSettings: 0
     ShowGridGraphSettigs: 0
-    ScaleLvl: 2
+    ScaleLvl: 1
   EditorSettings: {fileID: 11400000, guid: f54fe2e0866d59148bb49fcb7b6fd41b, type: 2}
   grids:
   - GridName: Default Grid 0
@@ -44439,7 +44439,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 23bd7220938178749ab90101d94d6bca, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.598
+  m_Volume: 0.148
   m_Pitch: 1
   Loop: 1
   Mute: 0
