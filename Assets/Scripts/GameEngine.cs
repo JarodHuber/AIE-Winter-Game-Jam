@@ -19,6 +19,9 @@ public class GameEngine : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+
         Timer();
     }
 
