@@ -34243,7 +34243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 1
   gameTimer:
-    delay: 120
+    delay: 30
   portal: {fileID: 1439074432}
   timerUI: {fileID: 1307759418}
   healthBar:
@@ -60203,7 +60203,7 @@ MonoBehaviour:
     ShowGridParameters: 1
     ShowPathfindingSettings: 0
     ShowGridGraphSettigs: 0
-    ScaleLvl: 2
+    ScaleLvl: 1
   EditorSettings: {fileID: 11400000, guid: f54fe2e0866d59148bb49fcb7b6fd41b, type: 2}
   grids:
   - GridName: Default Grid 0
@@ -61723,7 +61723,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
