@@ -44877,9 +44877,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 25, y: 25, z: 0}
   collectibleFab: {fileID: 0}
-  startCount: 6
+  startCount: 5
   waveSizeScaler: 1.76
-  spawnAggression: 3
+  spawnAggression: 4
   curStage: 0
   waveNum: 0
   totalEnemiesForWave: 0
