@@ -74448,7 +74448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 1
   gameTimer:
-    delay: 120
+    delay: 30
   portal: {fileID: 1458558440}
   timerUI: {fileID: 1783016130}
   healthBar:
