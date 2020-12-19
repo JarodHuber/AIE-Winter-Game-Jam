@@ -12,8 +12,11 @@ public class CreditCycle : MonoBehaviour
 
     private void Update()
     {
-        if (holdLength.Check())
-            creditNum.Check(1);
+        if (Input.GetMouseButtonDown(0))
+        {
+            creditNum.CountByValue(1);
+            creditNum.IsComplete();
+        }
 
         img.sprite = credits[(int)creditNum.Time];
     }
