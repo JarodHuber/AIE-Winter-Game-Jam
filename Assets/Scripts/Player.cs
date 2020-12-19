@@ -28,8 +28,14 @@ public class Player : MonoBehaviour
 
     Timer invincibleTimer = new Timer(0.2f);
 
+    Animator anim;
+
     private void Start()
     {
+        anim = GetComponent<Animator>();
+        anim.speed = 0f;
+        anim.Play(anim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, .99f);
+
         rb = GetComponent<Rigidbody2D>();
         reloadTimer.Reset(reloadTimer.Delay);
 
@@ -59,6 +65,32 @@ public class Player : MonoBehaviour
         vel.y = Input.GetAxis("Vertical");
         vel = Vector2.ClampMagnitude(vel, 1);
 
+        bool moving = vel != Vector2.zero;
+
+        if (moving)
+        {
+            anim.speed = 1f;
+
+            float tmpAxis = Input.GetAxis("HorizontalBullet") + Input.GetAxis("VerticalBullet");
+
+            anim.SetFloat("HorMove", (tmpAxis != 0) ? Input.GetAxis("HorizontalBullet") : vel.x);
+            anim.SetFloat("VertMove", (tmpAxis != 0) ? Input.GetAxis("VerticalBullet") : vel.y);
+
+            if (Mathf.Abs(vel.y) > Mathf.Abs(vel.x))
+            {
+                anim.SetTrigger("MovingVert");
+            }
+            else
+            {
+                anim.SetTrigger("MovingHor");
+            }
+        }
+        else
+        {
+            anim.speed = 0f;
+            anim.Play(anim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, .99f);
+        }
+
         rb.velocity = vel * speed;
     }
 
@@ -66,6 +98,7 @@ public class Player : MonoBehaviour
     {
         if (!reloadTimer.IsComplete(false))
             reloadTimer.CountByTime();
+
 
         if (Input.GetAxis("HorizontalBullet") > 0)
         {
