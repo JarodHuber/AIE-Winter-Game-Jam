@@ -364,12 +364,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee35346ece02a8a48baef0ac5bafa43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credits: []
+  credits:
+  - {fileID: 21300000, guid: 28e2d8108b074f94cb3569d9c3a12183, type: 3}
+  - {fileID: 21300000, guid: 7daa4c53f72240e4b856924a32b82d67, type: 3}
+  - {fileID: 21300000, guid: 8fcf5affc56e82c479ca56c90d63a1fb, type: 3}
+  - {fileID: 21300000, guid: 1c86ad43dc18ea040bbc3e190a1a959c, type: 3}
   img: {fileID: 1106653769}
   holdLength:
     delay: 3
   creditNum:
-    delay: 3
+    delay: 4
 --- !u!1 &1060055248
 GameObject:
   m_ObjectHideFlags: 0
