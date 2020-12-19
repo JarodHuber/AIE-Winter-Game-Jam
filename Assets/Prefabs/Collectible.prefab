@@ -113,5 +113,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectibleVariants:
   - {fileID: 21300000, guid: aaa6c28dbee6fe44e9cc6612fad2385d, type: 3}
-  - {fileID: 21300000, guid: 4c3318de7da110b4f80505dc92bee398, type: 3}
+  - {fileID: 21300000, guid: ee6af5bb79e43264e92d5aed36657759, type: 3}
   type: -1

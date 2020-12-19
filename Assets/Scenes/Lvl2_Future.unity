@@ -1230,7 +1230,7 @@ MonoBehaviour:
     ShowGridParameters: 1
     ShowPathfindingSettings: 0
     ShowGridGraphSettigs: 0
-    ScaleLvl: 1
+    ScaleLvl: 2
   EditorSettings: {fileID: 11400000, guid: f54fe2e0866d59148bb49fcb7b6fd41b, type: 2}
   grids:
   - GridName: Default Grid 0
@@ -70089,8 +70089,12 @@ MonoBehaviour:
   textSpeed:
     delay: 0.01
   dialoge:
-  - 
-  personTalking: 00000000
+  - 'Scrooge: Where am I now? What time is it?'
+  - '2nd Ghost: You''re in the future, Scrooge. One day after Christmas.'
+  - 'Scrooge: Is everyone dead?'
+  - '2nd Ghost: No... Only absorbed by the snowmen...'
+  - 'Scrooge: Noooooo! Some of those people owed me money!'
+  personTalking: 0000000001000000000000000100000000000000
   fades:
   - {fileID: 1161354842}
   - {fileID: 686558640}

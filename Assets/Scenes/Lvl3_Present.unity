@@ -50306,8 +50306,14 @@ MonoBehaviour:
   textSpeed:
     delay: 0.01
   dialoge:
-  - 
-  personTalking: 00000000
+  - '3rd Ghost: Hey Scrooge! Get over here man, I need you to hurry up so I can open
+    my presents!'
+  - "Scrooge: I\u2019m sorry, what? What presents? Who are you?"
+  - "3rd Ghost: Yes! My presents! I NEED to open them! But I CAN\u2019T because you
+    haven't finished your JOB!"
+  - 'Scrooge: Say no more. I''m ready to get back at these creeps!'
+  - '3rd Ghost: Save Christmas, Scrooge!'
+  personTalking: 0100000000000000010000000000000001000000
   fades:
   - {fileID: 1902129357}
   - {fileID: 1000453456}
@@ -74394,7 +74400,7 @@ MonoBehaviour:
     ShowGridParameters: 1
     ShowPathfindingSettings: 0
     ShowGridGraphSettigs: 0
-    ScaleLvl: 1
+    ScaleLvl: 2
   EditorSettings: {fileID: 11400000, guid: f54fe2e0866d59148bb49fcb7b6fd41b, type: 2}
   grids:
   - GridName: Default Grid 0
