@@ -60152,10 +60152,19 @@ MonoBehaviour:
   textSpeed:
     delay: 0.01
   dialoge:
-  - 'Scrooge: hello'
-  - 'Ghost: Hi!!!'
-  - 'Scrooge: Bye'
-  personTalking: 000000000100000000000000
+  - 'Scrooge: What? Where am I?'
+  - "1st Ghost: We\u2019re in the past, Scrooge. It\u2019s Christmas Eve, don\u2019t
+    you remember?"
+  - 'Scrooge: No, I stayed home counting my money.'
+  - 'Scrooge: On Christmas day I went out to yell at the sky and saw all those snowmen
+    attacking.'
+  - "1st Ghost: It all started here, Scrooge. Little Timmy couldn\u2019t resist opening
+    his presents early..."
+  - 'Scrooge: Well it''s not my fault some brat doomed everyone! Take me back to
+    the present! '
+  - "Past: We\u2019re out of time! Take this slingshot and fend off those demons!
+    The portal should open soon!"
+  personTalking: 00000000010000000000000000000000010000000000000000000000
   fades:
   - {fileID: 922240343}
   - {fileID: 685266391}
