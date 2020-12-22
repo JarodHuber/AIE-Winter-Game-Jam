@@ -34174,7 +34174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cf4af2e5d41f08846865c35613bc35e1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be65a47963392eb4e96049c7b729fee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -34723,7 +34723,7 @@ SpriteRenderer:
   m_SortingLayerID: -276260149
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: cf4af2e5d41f08846865c35613bc35e1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be65a47963392eb4e96049c7b729fee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -45766,7 +45766,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1227214441}
   - component: {fileID: 1227214444}
-  - component: {fileID: 1227214443}
   - component: {fileID: 1227214442}
   m_Layer: 0
   m_Name: ChristmasTree
@@ -45802,24 +45801,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029589415, y: 0.87572646}
-  m_Size: {x: 1.810416, y: 3.751453}
-  m_Direction: 0
---- !u!70 &1227214443
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227214440}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.053260088, y: -0.83430207}
-  m_Size: {x: 3.680439, y: 3.8579729}
+  m_Offset: {x: -0.011520386, y: -0.20844483}
+  m_Size: {x: 2.71389, y: 4.6910663}
   m_Direction: 0
 --- !u!212 &1227214444
 SpriteRenderer:
@@ -45860,7 +45843,7 @@ SpriteRenderer:
   m_SortingLayerID: -276260149
   m_SortingLayer: 1
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 530d268647f8dac47892c471c4136ddc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0de2351dc4927e84c91dd65a8963ba80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -69641,7 +69624,7 @@ SpriteRenderer:
   m_SortingLayerID: -276260149
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: cf4af2e5d41f08846865c35613bc35e1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be65a47963392eb4e96049c7b729fee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -70712,7 +70695,7 @@ SpriteRenderer:
   m_SortingLayerID: -276260149
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: cf4af2e5d41f08846865c35613bc35e1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be65a47963392eb4e96049c7b729fee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -74525,7 +74508,8 @@ MonoBehaviour:
   spawnBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 25, y: 25, z: 0}
-  collectibleFab: {fileID: 0}
+  collectibleFab: {fileID: 8747291353054040064, guid: cbe3af32b83202b47ada10a760a0c009,
+    type: 3}
   startCount: 5
   waveSizeScaler: 1.23
   spawnAggression: 2
