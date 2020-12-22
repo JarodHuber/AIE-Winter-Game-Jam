@@ -233,6 +233,6 @@ MonoBehaviour:
   enemySprites:
   - {fileID: 21300000, guid: bcf1bdfce2af85f4f9ee1f5caddb9a19, type: 3}
   - {fileID: 21300000, guid: 8af4b3f602feb704e85c4babc3bf9fc6, type: 3}
-  - {fileID: 21300000, guid: 7509028ded1e2ea48bf1d510dbbb1272, type: 3}
+  - {fileID: 21300000, guid: fcec2d99ea8df0142b69211535e4faf5, type: 3}
   prevPosition: {x: 0, y: 0}
   sp: {fileID: 0}
