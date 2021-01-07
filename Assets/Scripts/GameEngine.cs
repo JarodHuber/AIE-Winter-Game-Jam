@@ -17,6 +17,11 @@ public class GameEngine : MonoBehaviour
 
     public GameObject[] healthBar;
 
+    private void Awake()
+    {
+        Screen.SetResolution(1024, 768, true);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
